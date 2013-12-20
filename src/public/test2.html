@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="utf-8" />
+<title>无纸化会议系统</title>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/test/socket.io.js"></script>
+<script type="text/javascript" src="/test/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/test/start2.js"></script>
+<script type="text/javascript" src="/test/common.js"></script>
+<script type="text/javascript" src="/test/audience.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+<style type="text/css">
+.pzleft li.pza5 { position:relative;}
+.pzleft li.pza5 .colorBox{ display:none; position:absolute; left:110px; top:-12px; z-index:9; width:56px; border:1px #06C dotted; background:#f5f5f5; padding:5px;}
+.pzleft li.pza5 .colorBox li{ display:block; width:40px; height:40px; float:left; margin:3px; border:1px dotted #CCC;}
+
+.pzleft li.pza6 {position:relative;}
+.pzleft li.pza6 .penBox{ display:none; position:absolute; left:110px; top:0px; z-index:9; width:56px; border:1px #06C dotted; background:#f5f5f5; padding:5px;}
+.pzleft li.pza6 .penBox li{ display:block; width:90%; height:20px; float:left; margin:3px; border:1px dotted #CCC; background:#000; margin-top:10px;}
+
+</style>
+<script type="text/javascript">
+$(function(){
+	$("li.pza5").click(function(){
+		$("ul.penBox").hide();
+		$(this).find("ul").fadeToggle();
+	});
+	
+	$("li.pza6").click(function(){
+		$("ul.colorBox").hide();
+		$(this).find("ul").fadeToggle();
+	});
+	
+});
+</script>
+<body>
+
+	<div class="main" id="start2">
+    	<div class="pzbg">
+        	<div class="pz_top" >
+                <div class="pzleft">
+					<div id="user"></div>
+                    <ul>
+                        <li class="pza1"><a href="javascript:void(0)" id="startAnnotation"></a></li>
+						<li class="pza9"><a href="javascript:void(0)" id="mark"></a></li>
+                        <li class="pza2"><a href="javascript:void(0)" id="undo"></a></li>
+                        <li class="pza3"><a href="javascript:void(0)" id="redo"></a></li>
+                        <li class="pza4"><a href="javascript:void(0)" id="clear"></a></li>
+                        <li class="pza5"><a href="javascript:void(0)"></a>
+							<ul class="colorBox">
+								<li id="red" style="background:#F00"></li>
+								<li id="blue" style="background:#36F"></li>
+								<li id="green" style="background:#22b147"></li>
+							</ul>
+						</li>
+                        <li class="pza6"><a href="javascript:void(0)"></a>
+							<ul class="penBox">
+								<li id="oneNumber">
+									<div style="height:1px; background:#000; margin-top:10px;"></div>
+								</li>
+								<li id="twoNumber">
+									<div style="height:2px; background:#000; margin-top:10px;"></div>
+								</li>
+								<li id="threeNumber">
+									<div style="height:3px; background:#000; margin-top:10px;"></div>
+								</li>
+							</ul>
+						</li>
+
+						
+                        <li class="pza7"><a href="javascript:void(0)" id="syncnoqz"></a></li>
+                        <li class="pza8"><a href="javascript:void(0)" id="sync"></a></li>
+						
+						<li class="pza10"><a href="javascript:void(0)" id="saveMark"></a></li>
+						<!--
+						<li class="pza11"><a href="javascript:void(0)" id="cancelMark"></a></li>
+						-->
+                    </ul>	
+                </div>	
+                
+				<div id="canvas" class="pzright" onscroll="aaa();">
+					<div class="pzright2">
+						<div id="pic"></div>
+						<canvas id="graphics"  style="background-repeat:no-repeat;border:1px red  solid"></canvas>
+						<canvas id="drawing"  style="background-repeat:no-repeat;border:1px red  solid"></canvas>
+						<div id="snail"></div>
+					</div>
+				</div>
+            </div>
+            <div class="pz_bottom">
+            	<div class="pzpcmt">
+                	<ul>
+                    	<li class="pz_prev"><a href="javascript:void(0)" id="lastPage"></a></li>
+                        <li class="pz_next"><a href="javascript:void(0)" id="nextPage"></a></li>
+                    </ul>
+                </div>
+                <div class="pz_dchh">
+                	<div class="bot_righttc"><a href="#" id="endsync">退出</a></div>	
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
